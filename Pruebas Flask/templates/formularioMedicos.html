@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Registrar Médico</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Hospital SantoCristo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/registro">Registro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/consultar_medicos">Consultar Médicos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% with msj= get_flashed_messages() %}
+    {% if msj %}
+    {% for mensaje in msj %}
+        <p>{{ mensaje }}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <div class="container mt-5">
+        <form action="/guardarMedico" method="post">
+
+            <div class="mb-3">
+                <label class="form-label">RFC:</label>
+                <input type="text" class="form-control" name="txtRFC" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Nombre:</label>
+                <input type="text" class="form-control" name="txtNombre" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Apellido Paterno:</label>
+                <input type="text" class="form-control" name="txtApp" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Apellido Materno:</label>
+                <input type="text" class="form-control" name="txtApm" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Cedula:</label>
+                <input type="text" class="form-control" name="txtCedula" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Correo:</label>
+                <input type="email" class="form-control" name="txtCorreo" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Contraseña:</label>
+                <input type="password" class="form-control" name="txtContra" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Rol:</label>
+                <select class="form-control" name="txtRol" required>
+                    <option value="Admin">Medico Admin</option>
+                    <option value="Medico">Medico</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Registrar Médico</button>
+        </form>
+    </div>
+
+</body>
+</html>
